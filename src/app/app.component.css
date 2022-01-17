@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+:host {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #9a6619;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #b87717;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coffee-machine {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(169, 175, 184);
+  box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.coffee-machine h1 {
+    text-align: center;
+}
+
+.power-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.power-button button {
+    width: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    text-transform: uppercase;
+    background: rgb(93, 103, 116);
+    box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
+}
+
+.power-button .on {
+    background: rgb(119, 167, 230);
+}
+
+.display {
+    border: 1px solid rgb(169, 175, 184);
+    border-radius: 20px;
+    padding: 20px;
+    background: rgb(209, 222, 240);
+    box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
+}
+
+.display h1 {
+    font-weight: 300;
+}
+
+.beverages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.beverage {
+  width: calc(33% - 10px);
+  min-width: 100px;
+  text-align: center;
+  flex-flow: column;
+  padding-right: 5px;
+}
+.beverage:last-child {
+    padding-right: 0px;  
+}
+
+.beverage img {
+  width: calc(100% - 10px);
+  border-radius: 5%;
+  transform: scale(0.95);
+  padding: 5px;
+}
+
+.beverage:hover {
+    cursor:pointer;
+  }
+
+.beverage:hover img {
+  cursor:pointer;
+  transition: all 0.1s;
+  transform: scale(1);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px;
+}
+
+.beverage.selected img {
+    transition: all 0.1s;
+    transform: scale(1);
+    box-shadow: rgba(89, 134, 192, 0.7) 0px 0px 8px;
+  }
+
+  .form-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.form-element label {
+  display: flex;
+}
+
+.form-element input {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.form-element button {
+    margin-top: 20px;
+}
+
+button {
+    color: #fff;
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: rgb(108, 149, 202);
+    border: 1px solid rgb(77, 119, 175);
+}
+
+button:hover {
+    background: rgb(93, 134, 187);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {}
+
+@media screen and (max-width: 575px) {
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  h1 {
+    font-size: 16px;
+  }
+}
