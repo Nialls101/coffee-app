@@ -9,7 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+html, body {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -89,6 +89,10 @@ p {
 
 .display h1 {
     font-weight: 300;
+}
+
+.display:first-letter {
+  text-transform: uppercase;
 }
 
 .beverages {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { CoffeeIngredients } from './coffee-ingredients.model';
 
@@ -14,19 +14,18 @@ export class AppComponent implements OnInit {
   currentDate = new Date().toDateString();
   isBrewing = false;
   beverageSelected = '';
-  isError = false;
   coffeeIngredients: CoffeeIngredients = { beans: 25, milk: 20, sugar: 100 };
   currentOrder: CoffeeIngredients = { beans: 0, milk: 0, sugar: 0 };
   coffeeIngredientLevels = new BehaviorSubject<CoffeeIngredients>(this.coffeeIngredients);
 
   selectedBeverageIngredients = new BehaviorSubject<CoffeeIngredients>(this.currentOrder);
 
-  coffeeMachineForm = this.fb.group({
-    sugarAmount: [0, Validators.nullValidator],
-    milkWithCoffee: [0, Validators.nullValidator]
-  })
+  coffeeMachineForm = new FormGroup({
+    sugarAmount: new FormControl([0, Validators.nullValidator]),
+    milkWithCoffee: new FormControl([0, Validators.nullValidator]),
+  });
 
-  constructor(private fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void { }
 
@@ -68,6 +67,12 @@ export class AppComponent implements OnInit {
     }
   }
 
+  brewingDisplayMessage(beverage: string) {
+    setTimeout(() => {
+      this.displayMessage = beverage + ' is ready!';
+    }, 3000);
+  }
+
   resetDisplayMessage() {
     setTimeout(() => {
       this.displayMessage = 'Select your coffee beverage of choice';
@@ -106,11 +111,14 @@ export class AppComponent implements OnInit {
     if (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar) {
       this.coffeeIngredientLevels.value.sugar = this.coffeeIngredientLevels.value.sugar - this.currentOrder.sugar;
     }
+    this.displayMessage = this.beverageSelected + ' is brewing';
+    this.brewingDisplayMessage(this.beverageSelected);
     this.resetCoffeeMachine();
+    this.resetDisplayMessage();
+    this.isBrewing = false;
   }
 
   onSubmit() {
-    console.log('submitted');
     this.brewBeverage();
   }
 }
