@@ -1,43 +1,48 @@
 <form [formGroup]="coffeeMachineForm" (ngsubmit)="onSubmit()">
   <div class="content">
-    <div class="coffee-machine" *ngIf="!isBrewing">
+    <div class="coffee-machine">
       <div class="power-button">
-        <button type="button" (click)="clickPowerButton()"
-          [ngClass]="{'on' : powerButton === true}">
+        <button type="button" (click)="clickPowerButton()" [ngClass]="{'on' : powerButton === true}">
           {{ powerButton ? 'On' : 'Off' }}
         </button>
       </div>
-      <h1 class="display" *ngIf="!isBrewing">{{ displayMessage }}</h1>
-      <div class="beverages" *ngIf="powerButton">
-        <div class="beverage" (click)="selectBeverage('cappuccino')"
-          [ngClass]="{'selected' : beverageSelected === 'cappuccino'}">
-          <img src="../assets/images/cappuccino.jpg" alt="Cappuccino">
-          <h3>Cappuccino</h3>
-        </div>
-        <div class="beverage" (click)="selectBeverage('coffee')"
-          [ngClass]="{'selected' : beverageSelected === 'coffee'}">
-          <img src="../assets/images/coffee.jpg" alt="Coffee">
-          <h3>Coffee</h3>
-        </div>
-        <div class="beverage" (click)="selectBeverage('latte')" 
-          [ngClass]="{'selected' : beverageSelected === 'latte'}">
-          <img src="../assets/images/latte.jpg" alt="Latte">
-          <h3>Latte</h3>
-        </div>
-      </div>
-      <div class="form-element" *ngIf="beverageSelected && powerButton">
-        <label for="sugar">How many sugars?</label>
-        <input type="number" name="sugarAmount" id="sugarAmount" min="0" max="10" formControlName="sugarAmount"
-          [(ngModel)]="this.currentOrder.sugar">
-      </div>
+      <h1 class="display">{{ displayMessage }}</h1>
 
-      <div class="form-element" *ngIf="(beverageSelected === 'coffee') && powerButton">
-        <label for="sugar">Do you want milk?</label>
-        <input type="checkbox" name="milkWithCoffee" id="milkWithCoffee" formControlName="milkWithCoffee"
-          (change)="this.updateCoffeeOrder()">
+      <div class="brewing-options" *ngIf="!isBrewing">
+        <div class="beverages" *ngIf="powerButton">
+          <div class="beverage" (click)="selectBeverage('cappuccino')"
+            [ngClass]="{'selected' : beverageSelected === 'cappuccino'}">
+            <img src="../assets/images/cappuccino.jpg" alt="Cappuccino">
+            <h3>Cappuccino</h3>
+          </div>
+          <div class="beverage" (click)="selectBeverage('coffee')"
+            [ngClass]="{'selected' : beverageSelected === 'coffee'}">
+            <img src="../assets/images/coffee.jpg" alt="Coffee">
+            <h3>Coffee</h3>
+          </div>
+          <div class="beverage" (click)="selectBeverage('latte')"
+            [ngClass]="{'selected' : beverageSelected === 'latte'}">
+            <img src="../assets/images/latte.jpg" alt="Latte">
+            <h3>Latte</h3>
+          </div>
+        </div>
+        <div class="form-element" *ngIf="beverageSelected && powerButton">
+          <label for="sugar">How many sugars?</label>
+          <input type="number" name="sugarAmount" id="sugarAmount" min="0" max="10" formControlName="sugarAmount"
+            [(ngModel)]="this.currentOrder.sugar">
+        </div>
+
+        <div class="form-element" *ngIf="(beverageSelected === 'coffee') && powerButton">
+          <label for="sugar">Do you want milk?</label>
+          <input type="checkbox" name="milkWithCoffee" id="milkWithCoffee" formControlName="milkWithCoffee"
+            (change)="this.updateCoffeeOrder()">
+        </div>
+        <div class="form-element" *ngIf="beverageSelected && powerButton">
+          <button type="button" (click)="this.brewBeverage()">Order Beverage</button>
+        </div>
       </div>
-      <div class="form-element" *ngIf="beverageSelected && powerButton">
-        <button type="button" (click)="this.brewBeverage()">Order Beverage</button>
+      <div class="brewing" *ngIf="isBrewing">
+        <img src="../assets/images/brewing.gif" alt="Brewing">
       </div>
     </div>
   </div>

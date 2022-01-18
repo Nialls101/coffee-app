@@ -70,6 +70,7 @@ export class AppComponent implements OnInit {
   brewingDisplayMessage(beverage: string) {
     setTimeout(() => {
       this.displayMessage = beverage + ' is ready!';
+      this.isBrewing = false;
     }, 3000);
   }
 
@@ -83,7 +84,6 @@ export class AppComponent implements OnInit {
     this.beverageSelected = '';
     this.currentOrder = { beans: 0, milk: 0, sugar: 0 };
     this.coffeeMachineForm.controls['milkWithCoffee'].reset();
-    this.isBrewing = false;
   }
 
   brewBeverage() {
@@ -127,7 +127,7 @@ export class AppComponent implements OnInit {
 
     this.resetCoffeeMachine();
     this.resetDisplayMessage();
-    this.isBrewing = false;
+    
   }
 
   onSubmit() {
