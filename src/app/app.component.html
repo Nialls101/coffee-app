@@ -2,7 +2,10 @@
   <div class="content">
     <div class="coffee-machine" *ngIf="!isBrewing">
       <div class="power-button">
-        <button type="button" (click)="clickPowerButton()" [ngClass]="{'on' : powerButton === true}">{{ powerButton ? 'On' : 'Off' }}</button>
+        <button type="button" (click)="clickPowerButton()"
+          [ngClass]="{'on' : powerButton === true}">
+          {{ powerButton ? 'On' : 'Off' }}
+        </button>
       </div>
       <h1 class="display" *ngIf="!isBrewing">{{ displayMessage }}</h1>
       <div class="beverages" *ngIf="powerButton">
@@ -16,7 +19,8 @@
           <img src="../assets/images/coffee.jpg" alt="Coffee">
           <h3>Coffee</h3>
         </div>
-        <div class="beverage" (click)="selectBeverage('latte')" [ngClass]="{'selected' : beverageSelected === 'latte'}">
+        <div class="beverage" (click)="selectBeverage('latte')" 
+          [ngClass]="{'selected' : beverageSelected === 'latte'}">
           <img src="../assets/images/latte.jpg" alt="Latte">
           <h3>Latte</h3>
         </div>

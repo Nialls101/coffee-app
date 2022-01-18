@@ -88,31 +88,43 @@ export class AppComponent implements OnInit {
 
   brewBeverage() {
     this.isBrewing = true;
-    if (this.coffeeIngredientLevels.value.beans < 5) {
+    if ((this.coffeeIngredientLevels.value.beans < 5) && (this.coffeeIngredientLevels.value.milk < 3)) {
+      this.isBrewing = false;
+      this.displayMessage = 'Not enough beans and milk running low, please refill';
+      this.resetDisplayMessage();
+    } else if (this.coffeeIngredientLevels.value.beans < 5) {
+      this.isBrewing = false;
       this.displayMessage = 'Not enough beans, please refill';
       this.resetDisplayMessage();
-    }
-
-    if (this.coffeeIngredientLevels.value.milk < 3) {
+    } else if (this.coffeeIngredientLevels.value.milk < 3) {
+      this.isBrewing = false;
       this.displayMessage = 'Milk running low, please refill';
       this.resetDisplayMessage();
-    }
-
-    if (this.coffeeIngredientLevels.value.sugar < 5) {
+    } else if (this.coffeeIngredientLevels.value.sugar < 5) {
+      this.isBrewing = false;
       this.displayMessage = 'Sugar running low, please refill';
       this.resetDisplayMessage();
     }
-    if ((this.coffeeIngredientLevels.value.beans >= 5) && (this.coffeeIngredientLevels.value.milk >= this.currentOrder.milk) && (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar)) {
+    if (
+      (this.coffeeIngredientLevels.value.beans >= 5) &&
+      (this.coffeeIngredientLevels.value.milk >= this.currentOrder.milk) &&
+      (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar)
+    ) {
       this.coffeeIngredientLevels.value.beans = this.coffeeIngredientLevels.value.beans - this.currentOrder.beans;
+      this.displayMessage = this.beverageSelected + ' is brewing';
+      this.brewingDisplayMessage(this.beverageSelected);
     }
-    if ((this.coffeeIngredientLevels.value.milk >= this.currentOrder.milk) && (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar)) {
+    if (
+      (this.coffeeIngredientLevels.value.beans >= this.currentOrder.beans) &&
+      (this.coffeeIngredientLevels.value.milk >= this.currentOrder.milk) &&
+      (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar)
+    ) {
       this.coffeeIngredientLevels.value.milk = this.coffeeIngredientLevels.value.milk - this.currentOrder.milk;
     }
     if (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar) {
       this.coffeeIngredientLevels.value.sugar = this.coffeeIngredientLevels.value.sugar - this.currentOrder.sugar;
     }
-    this.displayMessage = this.beverageSelected + ' is brewing';
-    this.brewingDisplayMessage(this.beverageSelected);
+
     this.resetCoffeeMachine();
     this.resetDisplayMessage();
     this.isBrewing = false;
