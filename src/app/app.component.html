@@ -41,7 +41,7 @@
           <button type="button" (click)="this.brewBeverage()">Order Beverage</button>
         </div>
       </div>
-      <div class="brewing" *ngIf="isBrewing">
+      <div class="brewing" *ngIf="isBrewing && powerButton">
         <img src="../assets/images/brewing.gif" alt="Brewing">
       </div>
     </div>

@@ -88,7 +88,11 @@ export class AppComponent implements OnInit {
 
   brewBeverage() {
     this.isBrewing = true;
-    if ((this.coffeeIngredientLevels.value.beans < 5) && (this.coffeeIngredientLevels.value.milk < 3)) {
+
+    if (
+      (this.coffeeIngredientLevels.value.beans < 5) && 
+      (this.coffeeIngredientLevels.value.milk < 3)
+    ) {
       this.isBrewing = false;
       this.displayMessage = 'Not enough beans and milk running low, please refill';
       this.resetDisplayMessage();
@@ -105,6 +109,7 @@ export class AppComponent implements OnInit {
       this.displayMessage = 'Sugar running low, please refill';
       this.resetDisplayMessage();
     }
+
     if (
       (this.coffeeIngredientLevels.value.beans >= 5) &&
       (this.coffeeIngredientLevels.value.milk >= this.currentOrder.milk) &&
@@ -114,6 +119,7 @@ export class AppComponent implements OnInit {
       this.displayMessage = this.beverageSelected + ' is brewing';
       this.brewingDisplayMessage(this.beverageSelected);
     }
+
     if (
       (this.coffeeIngredientLevels.value.beans >= this.currentOrder.beans) &&
       (this.coffeeIngredientLevels.value.milk >= this.currentOrder.milk) &&
@@ -121,13 +127,13 @@ export class AppComponent implements OnInit {
     ) {
       this.coffeeIngredientLevels.value.milk = this.coffeeIngredientLevels.value.milk - this.currentOrder.milk;
     }
+
     if (this.coffeeIngredientLevels.value.sugar >= this.currentOrder.sugar) {
       this.coffeeIngredientLevels.value.sugar = this.coffeeIngredientLevels.value.sugar - this.currentOrder.sugar;
     }
 
     this.resetCoffeeMachine();
     this.resetDisplayMessage();
-    
   }
 
   onSubmit() {

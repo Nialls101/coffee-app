@@ -9,7 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -56,39 +57,39 @@ p {
 }
 
 .coffee-machine h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .power-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .power-button button {
-    width: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    justify-content: center;
-    text-transform: uppercase;
-    background: rgb(93, 103, 116);
-    box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
+  width: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+  text-transform: uppercase;
+  background: rgb(93, 103, 116);
+  box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
 }
 
 .power-button .on {
-    background: rgb(119, 167, 230);
+  background: rgb(119, 167, 230);
 }
 
 .display {
-    border: 1px solid rgb(169, 175, 184);
-    border-radius: 20px;
-    padding: 20px;
-    background: rgb(209, 222, 240);
-    box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
+  border: 1px solid rgb(169, 175, 184);
+  border-radius: 20px;
+  padding: 20px;
+  background: rgb(209, 222, 240);
+  box-shadow: inset rgba(89, 134, 192, 0.5) 0px 0px 15px;
 }
 
 .display h1 {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .display:first-letter {
@@ -111,8 +112,9 @@ p {
   flex-flow: column;
   padding-right: 5px;
 }
+
 .beverage:last-child {
-    padding-right: 0px;  
+  padding-right: 0px;
 }
 
 .beverage img {
@@ -123,27 +125,32 @@ p {
 }
 
 .beverage:hover {
-    cursor:pointer;
-  }
+  cursor: pointer;
+}
 
 .beverage:hover img {
-  cursor:pointer;
+  cursor: pointer;
   transition: all 0.1s;
   transform: scale(1);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 6px;
 }
 
 .beverage.selected img {
-    transition: all 0.1s;
-    transform: scale(1);
-    box-shadow: rgba(89, 134, 192, 0.7) 0px 0px 8px;
-  }
+  transition: all 0.1s;
+  transform: scale(1);
+  box-shadow: rgba(89, 134, 192, 0.7) 0px 0px 8px;
+}
 
-  .form-element {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.brewing img {
+  width: calc(100% - 10px);
+  padding: 5px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .form-element label {
   display: flex;
@@ -155,21 +162,21 @@ p {
 }
 
 .form-element button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 button {
-    color: #fff;
-    display: flex;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    background: rgb(108, 149, 202);
-    border: 1px solid rgb(77, 119, 175);
+  color: #fff;
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: rgb(108, 149, 202);
+  border: 1px solid rgb(77, 119, 175);
 }
 
 button:hover {
-    background: rgb(93, 134, 187);
+  background: rgb(93, 134, 187);
 }
 
 /* Responsive Styles */
